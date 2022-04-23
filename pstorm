@@ -1,0 +1,4 @@
+#!/bin/sh
+# https://www.jetbrains.com/help/phpstorm/working-with-the-ide-features-from-command-line.html
+# Opens a PhpStorm within a given path
+open -na "PhpStorm.app" --args "$@"

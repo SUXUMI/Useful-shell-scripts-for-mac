@@ -1,0 +1,3 @@
+#!/bin/sh
+# Mac alternative for: `du -h --max-depth=1`
+find "$@" -maxdepth 1 -type d -mindepth 1 -exec du -hs {} \;

@@ -1,0 +1,3 @@
+#!/bin/sh
+# Opens a new instance of Calculator app
+open -na Calculator

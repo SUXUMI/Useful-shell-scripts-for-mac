@@ -1,0 +1,3 @@
+#!/bin/sh
+# Opens a PyCharm within a given path
+open -na "PyCharm.app" --args "$@"
