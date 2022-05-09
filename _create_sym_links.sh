@@ -26,3 +26,22 @@ else
     echo "Creating a symlink for flushdns.   e.g.: flushdns"
     ln -f -s $(pwd)/flushdns /usr/local/bin/flushdns
 fi
+
+# there are many issues, 
+# if use #!/bin/sh  --> `$(type -t sail)` 
+#     --> returns nothing as "Aliases are not expanded when the shell is not interactive"
+
+# if use #!/bin/zsh --> `type -t` 
+#     --> error: `bad option: -t`
+#     https://unix.stackexchange.com/a/1498/514330
+
+ALIAS_FILE_PATH=~/.zshrc
+
+if [ -f $ALIAS_FILE_PATH ] && [ "$(cat $ALIAS_FILE_PATH | grep "^alias sail=")" = "" ]
+then
+    echo "Creating sail's aliases.."
+    echo >> $ALIAS_FILE_PATH "alias sail='./vendor/bin/sail'"
+    echo >> $ALIAS_FILE_PATH "alias saila='./vendor/bin/sail artisan'"
+fi
+
+# source $ALIAS_FILE_PATH
