@@ -1,3 +1,24 @@
 #!/bin/sh
 # Mac alternative for: `du -h --max-depth=1`
-find "$@" -maxdepth 1 -type d -mindepth 1 -exec du -hs {} \;
+
+# Usage:
+# `sizeof`          - display sizes of dirs in a current directory
+# `sizeof path`     - display sizes of dirs in a specified directory
+# `sizeof path d`   - display sizes of dirs in a specified directory
+# `sizeof path f`   - display sizes of files in a specified directory
+# `sizeof path a`   - display sizes of files/dirs in a specified directory
+# `sizeof path all` - display sizes of files/dirs in a specified directory
+
+_PATH="."
+if [ ! -z "$1" ]; then _PATH="$1"; fi
+
+_TYPE_PARAM="d"
+if   [ "$2" = "a" ] || [ "$2" = "all" ]; then _TYPE_PARAM="";
+elif [ "$2" = "d" ]; then _TYPE_PARAM="d";
+elif [ "$2" = "f" ]; then _TYPE_PARAM="f";
+fi
+
+_TYPE=""
+if [[ ! -z "$_TYPE_PARAM" ]]; then _TYPE="-type $_TYPE_PARAM"; fi
+
+find "$_PATH" -maxdepth 1 $_TYPE -mindepth 1 -exec du -hs {} \;
