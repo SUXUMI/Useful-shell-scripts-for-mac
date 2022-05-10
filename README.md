@@ -15,18 +15,47 @@ _create_sym_links.sh uninstall
 _create_sym_links.sh remove
 ```
 
-### calc
-
+### Calculator instance
 Run new instance of Calculator app
+```shell
+$ calc
+```
 
 ### flushdns
 Flush DNS Server Cache
+```shell
+$ flushdns
+```
 
-### pcharm path
+### PyCharm
 Run PyCharm within a given directory path
+```shell
+$ pycharm <path>
+```
 
-### pstorm path
+### PhpStorm
 Run PhpStorm within a given directory path
+```shell
+$ pstorm <path>
+```
 
-### sizeof path
-Alternative of `du -h --max-depth=1` to get the size of all the directories within a given directory path
+### Sizeof path
+Alternative of `du -h --max-depth=1` to get the size of all the directories (and files) within a given directory path
+```shell
+# display sizes of dirs in a current directory
+$ sizeof
+
+# display sizes of dirs in a specified directory
+$ sizeof <path>
+
+# display sizes of dirs in a specified directory
+$ sizeof <path> d
+
+# display sizes of files in a specified directory
+$ sizeof <path> f
+
+# display sizes of files/dirs in a specified directory
+$ sizeof <path> a
+# or
+$ sizeof <path> all
+```
