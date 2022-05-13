@@ -37,11 +37,24 @@ fi
 
 ALIAS_FILE_PATH=~/.zshrc
 
-if [ -f $ALIAS_FILE_PATH ] && [ "$(cat $ALIAS_FILE_PATH | grep "^alias sail=")" = "" ]
+if [ -f $ALIAS_FILE_PATH ]
 then
-    echo "Creating sail's aliases.."
-    echo >> $ALIAS_FILE_PATH "alias sail='./vendor/bin/sail'"
-    echo >> $ALIAS_FILE_PATH "alias saila='./vendor/bin/sail artisan'"
+    # sail aliases
+    if [ "$(cat $ALIAS_FILE_PATH | grep "^alias sail=")" = "" ]
+    then
+        echo "Creating sail's aliases.."
+        echo >> $ALIAS_FILE_PATH "alias sail='./vendor/bin/sail'"
+        echo >> $ALIAS_FILE_PATH "alias saila='./vendor/bin/sail artisan'"
+    fi
+
+    # git aliases
+    # actually some git shortcuts already exists 🤔
+    # like: ga, gc
+    # gs = `git add .`
+    if [ "$(cat $ALIAS_FILE_PATH | grep "^alias gs=")" = "" ]; then
+        echo "Creating alias for: gs = git status"
+        echo >> $ALIAS_FILE_PATH "alias gs='git status'"
+    fi
 fi
 
 # source $ALIAS_FILE_PATH

@@ -59,3 +59,13 @@ $ sizeof <path> a
 # or
 $ sizeof <path> all
 ```
+
+### aliases
+```shell
+# sail
+sail  = ./vendor/bin/sail
+saila = ./vendor/bin/sail artisan
+
+# git
+gs = git status
+```
