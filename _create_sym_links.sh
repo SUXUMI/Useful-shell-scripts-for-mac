@@ -49,11 +49,29 @@ then
 
     # git aliases
     # actually some git shortcuts already exists 🤔
-    # like: ga, gc
-    # gs = `git add .`
-    if [ "$(cat $ALIAS_FILE_PATH | grep "^alias gs=")" = "" ]; then
-        echo "Creating alias for: gs = git status"
-        echo >> $ALIAS_FILE_PATH "alias gs='git status'"
+    # like: ga, gc, gl, gp
+    # gs = `git status`
+    shortcut='gs'
+    cmd='git status'
+    if [ "$(cat $ALIAS_FILE_PATH | grep "^alias $shortcut=")" = "" ]; then
+        echo "Creating alias for: $shortcut = $cmd"
+        echo >> $ALIAS_FILE_PATH "alias $shortcut='$cmd'"
+    fi
+
+    # glogo = `git log --oneline`
+    shortcut='glogo'
+    cmd='git log --oneline --graph'
+    if [ "$(cat $ALIAS_FILE_PATH | grep "^alias $shortcut=")" = "" ]; then
+        echo "Creating alias for: $shortcut = $cmd"
+        echo >> $ALIAS_FILE_PATH "alias $shortcut='$cmd'"
+    fi
+
+    # glogs = `git log --stat --graph`
+    shortcut='glogs'
+    cmd='git log --stat --graph'
+    if [ "$(cat $ALIAS_FILE_PATH | grep "^alias $shortcut=")" = "" ]; then
+        echo "Creating alias for: $shortcut = $cmd"
+        echo >> $ALIAS_FILE_PATH "alias $shortcut='$cmd'"
     fi
 fi
 

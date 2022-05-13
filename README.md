@@ -68,4 +68,6 @@ saila = ./vendor/bin/sail artisan
 
 # git
 gs = git status
+glogo = git log --oneline --graph
+glogs = git log --stat --graph
 ```
