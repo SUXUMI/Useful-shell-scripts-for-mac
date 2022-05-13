@@ -73,6 +73,14 @@ then
         echo "Creating alias for: $shortcut = $cmd"
         echo >> $ALIAS_FILE_PATH "alias $shortcut='$cmd'"
     fi
+
+    # glogs = `git add . && git commit -m`
+    shortcut='gac'
+    cmd='git add . && git commit'
+    if [ "$(cat $ALIAS_FILE_PATH | grep "^alias $shortcut=")" = "" ]; then
+        echo "Creating alias for: $shortcut = $cmd"
+        echo >> $ALIAS_FILE_PATH "alias $shortcut='$cmd'"
+    fi
 fi
 
 # source $ALIAS_FILE_PATH

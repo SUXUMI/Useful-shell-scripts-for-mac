@@ -67,7 +67,8 @@ sail  = ./vendor/bin/sail
 saila = ./vendor/bin/sail artisan
 
 # git
-gs = git status
+gs    = git status
+gac   = git add . && git commit
 glogo = git log --oneline --graph
 glogs = git log --stat --graph
 ```
