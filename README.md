@@ -71,6 +71,9 @@ $ gs    = git status
 $ gac   = git add . && git commit
 $ glogo = git log --oneline --graph
 $ glogs = git log --stat --graph
+
+# pull submodules recursively
+$ gls   = git submodule update --init --recursive
 ```
 
 ### Delete .DS_Store (or any) files recursively

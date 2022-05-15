@@ -84,6 +84,14 @@ then
         echo "Creating alias for: $shortcut = $cmd"
         echo >> $ALIAS_FILE_PATH "alias $shortcut='$cmd'"
     fi
+
+    # gls = `git submodule update --init --recursive`
+    shortcut='gls'
+    cmd='git submodule update --init --recursive'
+    if [ "$(cat $ALIAS_FILE_PATH | grep "^alias $shortcut=")" = "" ]; then
+        echo "Creating alias for: $shortcut = $cmd"
+        echo >> $ALIAS_FILE_PATH "alias $shortcut='$cmd'"
+    fi
 fi
 
 # source $ALIAS_FILE_PATH
