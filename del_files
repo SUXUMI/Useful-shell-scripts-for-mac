@@ -1,0 +1,37 @@
+#!/bin/sh
+
+# Usage:
+# `del_files`           - deletes .DS_Store files recursively in the current directory
+# `del_files path`      - deletes .DS_Store files recursively in a specified directory
+# `del_files path name` - deletes 'name' files recursively in a specified directory
+
+_PATH="."
+if [ ! -z "$1" ]; then _PATH="$1"; fi
+
+_NAME=".DS_Store"
+if [ ! -z "$2" ]; then _NAME="$2"; fi
+
+echo '=======\n'
+
+BASE_CMD=('find "$_PATH" -name "$_NAME" -type f')
+
+# echo  "${BASE_CMD}"
+eval  "${BASE_CMD}"
+
+# get found files total count & trim result
+COUNT=$(eval "${BASE_CMD} | wc -l | xargs")
+
+echo '\n=======\n'
+
+if [ $COUNT -eq 0 ]; then
+    echo "Nothing found"
+else
+    echo "Above listed ${COUNT} files will be deleted permanently!"
+    read -p "Are you sure? (y = Yes): " ACCEPT
+
+    if [ "$ACCEPT" = "y" ] || [ "$ACCEPT" = "yes" ]; then
+        # $(eval "${BASE_CMD} -delete | wc -l | xargs")
+        echo $(eval "${BASE_CMD} -delete") 
+        echo 'file(s) deleted!'
+    fi
+fi

@@ -25,6 +25,9 @@ else
 
     echo "Creating a symlink for flushdns.   e.g.: flushdns"
     ln -f -s $(pwd)/flushdns /usr/local/bin/flushdns
+
+    echo "Creating a symlink for del_files.  e.g.: del_files"
+    ln -f -s $(pwd)/del_files /usr/local/bin/del_files
 fi
 
 # there are many issues, 

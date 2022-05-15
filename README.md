@@ -5,14 +5,14 @@ After main file execution, it will be created a symlink for each script allowing
 ## Usage
 ```shell
 # install
-_create_sym_links.sh
+$ _create_sym_links.sh
 
 # uninstall / remove symlinks
-_create_sym_links.sh uninstall
+$ _create_sym_links.sh uninstall
 
 # or
 
-_create_sym_links.sh remove
+$ _create_sym_links.sh remove
 ```
 
 ### Calculator instance
@@ -67,8 +67,22 @@ sail  = ./vendor/bin/sail
 saila = ./vendor/bin/sail artisan
 
 # git
-gs    = git status
-gac   = git add . && git commit
-glogo = git log --oneline --graph
-glogs = git log --stat --graph
+$ gs    = git status
+$ gac   = git add . && git commit
+$ glogo = git log --oneline --graph
+$ glogs = git log --stat --graph
+```
+
+### Delete .DS_Store (or any) files recursively
+```shell
+
+# Deletes .DS_Store files recursively in the current directory
+$ del_files
+
+# Deletes .DS_Store files recursively in a specified directory
+$ del_files <path>
+
+# Deletes 'name' matched files recursively in a specified directory
+$ del_files <path> <files_match_name>
+
 ```
