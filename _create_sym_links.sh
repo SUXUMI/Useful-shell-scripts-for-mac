@@ -1,5 +1,22 @@
 #!/bin/sh
 
+ALIAS_FILE_PATH=
+
+# Determine profile file path
+if [ -f ~/.zshrc1 ]; then
+    ALIAS_FILE_PATH=~/.zshrc
+elif [ -f ~/.zprofile ]; then
+    ALIAS_FILE_PATH=~/.zprofile
+elif [ -f ~/.bash_profile ]; then
+    ALIAS_FILE_PATH=~/.bash_profile
+else
+    touch ~/.zshrc
+    ALIAS_FILE_PATH=~/.zshrc
+fi
+
+echo "Profile file path: $ALIAS_FILE_PATH"
+
+
 # echo "Current directory path is:" $(pwd)
 
 if [[ $1 = "uninstall"  || $1 = "remove" ]]
@@ -30,6 +47,7 @@ else
     ln -f -s $(pwd)/del_files /usr/local/bin/del_files
 fi
 
+
 # there are many issues, 
 # if use #!/bin/sh  --> `$(type -t sail)` 
 #     --> returns nothing as "Aliases are not expanded when the shell is not interactive"
@@ -37,8 +55,6 @@ fi
 # if use #!/bin/zsh --> `type -t` 
 #     --> error: `bad option: -t`
 #     https://unix.stackexchange.com/a/1498/514330
-
-ALIAS_FILE_PATH=~/.zshrc
 
 if [ -f $ALIAS_FILE_PATH ]
 then
